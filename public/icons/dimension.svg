@@ -1,0 +1,19 @@
+<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="dimension">
+<mask id="mask0_1257_36548" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="13" height="13">
+<rect id="Bounding box" x="0.823242" y="0.312988" width="12" height="12" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_1257_36548)">
+<path id="18_up_rating" d="M2.0844 12.3859C1.71328 12.3859 1.39558 12.2537 1.13129 11.9894C0.867006 11.7251 0.734863 11.4074 0.734863 11.0363V1.58953C0.734863 1.21841 0.867006 0.900703 1.13129 0.636418C1.39558 0.372133 1.71328 0.23999 2.0844 0.23999H11.6505C12.0216 0.23999 12.3393 0.372133 12.6036 0.636418C12.8679 0.900703 13 1.21841 13 1.58953V11.0363C13 11.4074 12.8679 11.7251 12.6036 11.9894C12.3393 12.2537 12.0216 12.3859 11.6505 12.3859H2.0844ZM2.0844 11.0363H11.6505V1.58953H2.0844V11.0363Z" fill="black"/>
+<rect id="Rectangle 10" x="2.87842" y="2.72803" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 13" x="2.87842" y="5.427" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 16" x="2.87842" y="8.12622" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 11" x="6.25244" y="2.72803" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 14" x="6.25244" y="5.427" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 17" x="6.25244" y="8.12622" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 12" x="9.62598" y="2.72803" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 15" x="9.62598" y="5.427" width="1.34954" height="1.34954" fill="#FF0000"/>
+<rect id="Rectangle 18" x="9.62598" y="8.12622" width="1.34954" height="1.34954" fill="#FF0000"/>
+</g>
+</g>
+</svg>

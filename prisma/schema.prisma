@@ -1,0 +1,237 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   Int                   @id @default(autoincrement())
+  name                 String
+  email                String                @unique
+  password             String
+  phoneNumber          String?
+  resetToken           String?
+  lastLogin            DateTime?
+  status               UserStatus            @default(Active)
+  globalSuperAdmin     Boolean               @default(false)
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  clientUsers          ClientUser[]
+  serviceProviderUsers ServiceProviderUser[]
+  apexUsers            ApexUser[]
+  fileUsers            FileUser[]
+
+  @@map("users")
+}
+
+enum UserStatus {
+  Active   @map("Active")
+  Inactive @map("Inactive")
+  Pending  @map("Pending")
+}
+
+enum UserRole {
+  SuperAdmin @map("SuperAdmin")
+  Admin      @map("Admin")
+  User       @map("User")
+}
+
+model ClientUser {
+  id          Int      @id @default(autoincrement())
+  role        UserRole @default(User)
+  permissions Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId      Int
+  client      Client   @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  clientId    Int
+
+  @@map("clientusers")
+}
+
+model ServiceProviderUser {
+  id                Int             @id @default(autoincrement())
+  role              UserRole        @default(User)
+  permissions       Json?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  user              User            @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId            Int
+  serviceProvider   ServiceProvider @relation(fields: [serviceProviderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  serviceProviderId Int
+
+  @@map("serviceproviderusers")
+}
+
+model ApexUser {
+  id          Int      @id @default(autoincrement())
+  role        UserRole @default(User)
+  permissions Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId      Int
+  apex        Apex     @relation(fields: [apexId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  apexId      Int
+
+  @@map("apexusers")
+}
+
+model Client {
+  id                Int              @id @default(autoincrement())
+  name              String
+  website           String
+  phoneNumber       String
+  status            UserStatus       @default(Active)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  users             ClientUser[]
+  serviceProvider   ServiceProvider? @relation(fields: [serviceProviderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  serviceProviderId Int?
+  apex              Apex?            @relation(fields: [apexId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  apexId            Int?
+
+  @@map("clients")
+}
+
+model ServiceProvider {
+  id        Int                   @id @default(autoincrement())
+  name      String
+  status    UserStatus            @default(Active)
+  createdAt DateTime              @default(now())
+  updatedAt DateTime              @updatedAt
+  users     ServiceProviderUser[]
+  clients   Client[]
+  apex      Apex?                 @relation(fields: [apexId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  apexId    Int?
+
+  @@map("serviceproviders")
+}
+
+model Apex {
+  id               Int               @id @default(autoincrement())
+  name             String
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  users            ApexUser[]
+  clients          Client[]
+  serviceProviders ServiceProvider[]
+
+  @@map("apexs")
+}
+
+enum Tagging {
+  Manual @map("Manual")
+  Auto   @map("Auto")
+}
+
+enum Status {
+  Success @map("Success")
+  Failed  @map("Failed")
+  Pending @map("Pending")
+}
+
+model FileUser {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId      Int
+  file        File       @relation(fields: [fileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  fileId      Int
+  splitFile   SplitFile? @relation(fields: [splitFileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  splitFileId Int?
+
+  @@map("fileusers")
+}
+
+model Taxonomy {
+  id               Int               @id @default(autoincrement())
+  name             String            @unique
+  data             Json?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  File             File[]
+  TaxonomyElements TaxonomyElement[]
+
+  @@map("taxonomy")
+}
+
+model TaxonomyElement {
+  id         Int      @id @default(autoincrement())
+  sheet      String?
+  name       String?
+  label      String?
+  data       Json?
+  taxonomy   Taxonomy @relation(fields: [taxonomyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  taxonomyId Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("elements")
+}
+
+model File {
+  id             Int         @id @default(autoincrement())
+  fileName       String?
+  companyName    String
+  ticker         String
+  cik            String
+  companyWebsite String
+  formType       String
+  quarterType    String?
+  period         DateTime
+  periodFrom     DateTime
+  periodTo       DateTime
+  unit           Json
+  url            String
+  tagging        Tagging     @default(Manual)
+  status         Status      @default(Pending)
+  warning        Json?
+  error          Json?
+  extra          Json?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  taxonomy       Taxonomy    @relation(fields: [taxonomyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  taxonomyId     Int
+  fileUsers      FileUser[]
+  splitFiles     SplitFile[]
+  Context        Context[]
+
+  @@map("files")
+}
+
+model SplitFile {
+  id        Int        @id @default(autoincrement())
+  fileName  String?
+  url       String
+  status    Status     @default(Pending)
+  warning   Json?
+  error     Json?
+  extra     Json?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  file      File       @relation(fields: [fileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  fileId    Int
+  fileUsers FileUser[]
+  Context   Context[]
+
+  @@map("splitfiles")
+}
+
+model Context {
+  id          Int        @id @default(autoincrement())
+  data        String?
+  file        File       @relation(fields: [fileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  fileId      Int
+  splitFile   SplitFile? @relation(fields: [splitFileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  splitFileId Int?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("contexts")
+}
