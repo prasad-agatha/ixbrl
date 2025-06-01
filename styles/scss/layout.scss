@@ -1,0 +1,131 @@
+.top-nav {
+  background-color: var(--bg-layout);
+  position: fixed;
+  z-index: 30;
+  width: 100%;
+  top: 0;
+
+  .nav-start {
+    font-family: "IBM Plex Sans";
+    font-weight: 600;
+    font-size: 16px;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .nav-link {
+    a {
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    a:hover,
+    a.active {
+      color: var(--primary) !important;
+    }
+  }
+}
+
+.list-group-item {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background-color: var(--list-group-bg);
+}
+.list-group-item:last-child {
+  border-bottom: 0;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  overflow: auto;
+}
+
+.img-div {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+.login-section {
+  background: var(--bg);
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-carousel {
+  .carousel-indicators {
+    bottom: -1rem;
+    margin: 0;
+    button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--bg-gray);
+      .active {
+        background: var(--primary);
+      }
+    }
+    button.active {
+      background-color: var(--primary);
+    }
+  }
+}
+
+.login-form {
+  max-width: 356px;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  margin: 1rem;
+  gap: 1.5rem;
+  div {
+    text-align: center;
+  }
+  input,
+  .input-div {
+    border-radius: 8px;
+    border: 0;
+    background: var(--bg) !important;
+    width: 100%;
+    outline: 0;
+  }
+  input {
+    padding: 0.75rem 1rem;
+  }
+  .input-div {
+    img {
+      padding: 1rem;
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 380px) {
+    .captcha-small {
+      display: block;
+    }
+    .captcha-large {
+      display: none;
+    }
+  }
+  @media (min-width: 380px) {
+    .captcha-large {
+      display: block;
+    }
+    .captcha-small {
+      display: none;
+    }
+  }
+}

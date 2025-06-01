@@ -1,0 +1,151 @@
+.files-tabs {
+  div {
+    border-bottom: 2px solid transparent;
+    color: var(--color-light);
+    cursor: pointer;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+  span {
+    font-size: 1.5rem;
+  }
+  button,
+  a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .active {
+    border-bottom: 2px solid var(--primary);
+    color: var(--color);
+  }
+}
+
+.unit-table {
+  div {
+    width: calc((100% - 30px) / 3);
+    padding: 0.25rem 0.5rem;
+  }
+  div:last-child {
+    width: 30px;
+    display: flex;
+  }
+}
+
+.search-table {
+  div {
+    padding: 0.25rem 0.5rem;
+    width: 100%;
+    &:first-child {
+      min-width: 140px;
+      width: 140px;
+    }
+    &:last-child {
+      min-width: 20px;
+      width: 20px;
+    }
+  }
+  &:hover {
+    background: var(--bg) !important;
+  }
+}
+
+.dimension-table {
+  div {
+    width: calc((100% - 30px) / 2);
+    padding: 0.25rem 0.5rem;
+  }
+  div:last-child {
+    width: 30px;
+    display: flex;
+  }
+}
+
+.file-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  gap: 0.75rem;
+}
+.file-container.items {
+  gap: 0.25rem 0;
+  border-radius: 40px;
+  @media (min-width: 1400px) {
+    justify-content: space-between;
+  }
+  .file-nav-button {
+    padding: 0 0.25rem;
+    font-size: 13px;
+    height: 24px;
+  }
+  .file-nav-dropdown {
+    button {
+      gap: 0.25rem;
+      padding: 0 0.25rem;
+      font-size: 13px;
+      height: 24px;
+    }
+  }
+}
+.file-nav-button {
+  border: 0;
+  background: transparent;
+  color: var(--color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.file-nav-dropdown {
+  button {
+    border: 0 !important;
+    background: transparent !important;
+    color: var(--color) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0;
+    font-size: 14px;
+    height: 30px;
+  }
+  div {
+    min-width: max-content;
+    padding: 0;
+    a {
+      font-size: 14px;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+// #0090a11a
+
+/* ========== ToolTip ==========*/
+.tooltip-text {
+  visibility: hidden;
+  font-size: 12px;
+  width: 65px;
+  background-color: var(--primary);
+  color: var(--bg);
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: -40px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

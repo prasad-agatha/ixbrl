@@ -1,0 +1,39 @@
+// Bootstrap Override
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+@import "./scss/bootstrap.override.scss";
+
+@import "react-phone-input-2/lib/style.css";
+@import "react-toastify/dist/ReactToastify.css";
+
+// Custom Styles
+@import "./scss//accordion";
+@import "./scss/button";
+@import "./scss/colors";
+@import "./scss/font";
+@import "./scss/general";
+@import "./scss/grid";
+@import "./scss/img";
+@import "./scss/input";
+@import "./scss/section";
+@import "./scss/spinner";
+@import "./scss/theme";
+@import "./scss/layout";
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-weight: 400;
+  src: url("/fonts/IBMPlexSans.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  src: url("/fonts/Inter.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-weight: 400;
+  src: url("/fonts/Lato.ttf") format("truetype");
+}

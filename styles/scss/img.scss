@@ -1,0 +1,11 @@
+.collaborator-img {
+  border: 0.35px solid var(--border-gray);
+  border-radius: 50%;
+  background: var(--bg-gray);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  font-size: 10px;
+  &:not(:first-of-type) {
+    margin-left: -0.5rem;
+  }
+}

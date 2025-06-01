@@ -1,0 +1,140 @@
+:root {
+  --bs-font-sans-serif: "IBMPlexSans";
+  --bg: #f5f5f5;
+  --bg-layout: white;
+  --color: #47494d;
+  --color-light: #919eab;
+  --bs-primary-rgb: 0 144 161;
+  --mprimary: #0090a11a;
+  --primary: #0090a1;
+  --bg-primary: #e9ecfc;
+  --success: #005e36;
+  --bg-success: #d2ffe6;
+  --danger: #be0f0f;
+  --bg-danger: #fee1e3;
+  --orange: #ff6b00;
+  --bg-orange: #fef1e1;
+  --dgreen: #09292a;
+  --lgreen: #00c708;
+  --bg-lgreen: #e7fee1;
+  --bg-gray: #87999b;
+  --border-gray: #c9c9c9;
+  --hover: #e6eeff;
+  --list-group-bg: white;
+  --card-primary: linear-gradient(293.37deg, #0a5565 0%, #5ae1ff 146.99%);
+}
+
+html {
+  height: 100vh;
+}
+body,
+#__next {
+  height: 100%;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  color: var(--color);
+  background: var(--bg);
+}
+a {
+  text-decoration: none;
+  color: var(--color) !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  display: block;
+  background: url("/calendar.svg") no-repeat;
+  width: 16px;
+  height: 16px;
+  padding: 1px 0 0 1px;
+  border-width: thin;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+input::placeholder {
+  color: var(--color-light) !important;
+}
+
+.dropdown-item:active {
+  background-color: var(--bg) !important;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.react-tel-input :disabled {
+  cursor: text !important;
+}
+.react-tel-input,
+.react-tel-inputs {
+  width: 100% !important;
+}
+
+.cr-p {
+  cursor: pointer !important;
+}
+.relative {
+  position: relative !important;
+}
+.absolute {
+  position: absolute !important;
+}
+.sp-1 {
+  width: 1rem;
+  height: 1rem;
+}
+.sp-75 {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.w-100px {
+  width: 100px;
+  min-width: 100px;
+}
+.w-70px {
+  width: 70px;
+  min-width: 70px;
+}
+
+.popover-arrow {
+  display: none !important;
+}
+.popover-item:hover {
+  background-color: var(--hover);
+}
+
+.tooltip .tooltip-arrow {
+  display: none !important;
+}
+
+/*-------------ScrollBar-------------*/
+@media (max-width: 576px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #b3afb3;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b3afb3;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 0px;
+  box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+}

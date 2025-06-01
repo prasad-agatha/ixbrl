@@ -1,0 +1,15 @@
+.accordion-button {
+  background-color: var(--primary) !important;
+  color: white !important;
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  box-shadow: none !important;
+}
+.accordion-button::after {
+  background-image: url("/icons/drop-down-arrow.svg") !important;
+}
+.accordion-body {
+  padding: 0.5rem;
+}
